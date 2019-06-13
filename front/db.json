@@ -1,14 +1,29 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "CopyRight Automatico",
-      "description": "[JS]"
+      "title": "HTML",
+      "description": "HTML 5, semantic tags, new type of input, new tags",
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "HtmlWebpackPlugin Multiples HTML files",
-      "description": "[JS, webpack]"
+      "title": "CSS",
+      "description": "CSS 3, SASS/LESS, Transition, Animations",
+      "id": 2
+    },
+    {
+      "title": "JavaScript",
+      "description": "Arrow function, Promise, React, Angular, ES 6+",
+      "id": 3
+    },
+    {
+      "title": "React",
+      "description": "State, Props, React hooks",
+      "id": 4
+    },
+    {
+      "title": "Angular",
+      "description": "NgModel, Observable, RxJx, Stream",
+      "id": 5
     }
   ]
 }

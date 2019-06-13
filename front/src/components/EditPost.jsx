@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import styles from './style.module.css';
 
 const EditPost = (props) => {
     const [titleValue, setTitleValue] = useState(null);
@@ -52,10 +53,12 @@ const EditPost = (props) => {
                     <Form.Label>Description</Form.Label>
                     <Form.Control type="text" placeholder="Description" onChange={ e => handleDescriptionValue(e.target.value)} />
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={editPost}>
-                    Submit
-                </Button>
-                <Button onClick={props.onHide}>Close</Button>
+                <div className={styles.btnGroup}>
+                  <Button variant="success" type="submit" onClick={editPost} disabled={titleValue || titleValue === '' ? false : true}>
+                      Save changes
+                  </Button>
+                  <Button onClick={props.onHide} variant="danger">Close</Button>
+                </div>
             </Form>
           </Modal.Body>
         </Modal>

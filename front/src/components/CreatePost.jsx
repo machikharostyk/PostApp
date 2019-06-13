@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import styles from './style.module.css';
 
 
 const CreatePost = (props) => {
@@ -36,11 +37,10 @@ const CreatePost = (props) => {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Modal heading
+              Create new post
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Create new post</h4>
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Title</Form.Label>
@@ -51,10 +51,12 @@ const CreatePost = (props) => {
                     <Form.Label>Description</Form.Label>
                     <Form.Control type="text" placeholder="Description" onChange={ e => handleDescriptionValue(e.target.value)} />
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={createNewPost}>
-                    Submit
-                </Button>
-                <Button onClick={props.onHide}>Close</Button>
+                <div className={styles.btnGroup}>
+                  <Button variant="success" type="submit" onClick={createNewPost} disabled={titleValue || titleValue === '' ? false : true}>
+                      Create
+                  </Button>
+                  <Button onClick={props.onHide} variant="danger">Close</Button>
+                </div>
             </Form>
           </Modal.Body>
         </Modal>

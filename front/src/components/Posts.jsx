@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { FaEye, FaEdit, FaTrash } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, ListGroup, Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import styles from './style.module.css';
 import CreatePost from './CreatePost';
 import DeletePost from './DeletePost';
@@ -52,53 +52,86 @@ const ListOfPosts = () => {
         }
     };
 
-    // const showDeleteModal = (id) => {
-    //     setDeletePostModal(true);
-    //     setPostId(id);
-    // }
-    // const closeDeleteModal = () => setDeletePostModal(false);
-
-
     if(!listOfPost) return <h1> Loading ....</h1>
     return (
         <Container>
             <Row>
-                <Col>
+                <Col className={styles.title}>
                     <h1>All posts</h1>
                 </Col>
             </Row>
             <Row>
-                <Col>
+                <Col className={styles.createNewPost}>
                     <Button variant="success" onClick={() => showModal(null, true)}>Create new post</Button>
                 </Col>
             </Row>
+            <ListGroup className={styles.listGroup}>
             {listOfPost && listOfPost.map( currentPost => (
-                <Row key={currentPost.id}>
-                    <Col>
-                        <p>{currentPost.title}</p>
-                        <p>{currentPost.description}</p>
-                    </Col>
-                    <Col className={styles.postActions}>
-                    <div>
-                        <Link to={`/posts/${currentPost.id}`}>
-                            <FaEye />
-                            <p>View</p>
-                        </Link>
-                    </div>
-                    <div onClick={() => showModal(currentPost.id, false, true, false)}>
-                        <FaEdit />
-                        <p>Edit</p>
-                    </div>
-                    <div onClick={() => showModal(currentPost.id, false, false, true)}>
-                        <FaTrash />
-                        <p>Delete</p>
-                    </div>
-                    </Col>
-                </Row>
+                <ListGroup.Item key={currentPost.id} className={styles.listItem}>
+                    <Row >
+                        <Col className={styles.postTitle}>
+                            <h3>{currentPost.title}</h3>
+                        </Col>
+                        <Col>
+                            <div className={styles.postActions}>
+                            <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                    <Tooltip>
+                                        View Post
+                                    </Tooltip>
+                                }
+                            >
+                            <div>
+                            <Link to={`/posts/${currentPost.id}`} className={styles.postAction}>
+                                <FaEye />
+                                <p>View</p>
+                            </Link>
+                        </div>
+                        </OverlayTrigger>
+                        <OverlayTrigger
+                        placement="top"
+                        overlay={
+                            <Tooltip>
+                                Edit Post
+                            </Tooltip>
+                        }>
+                        <div onClick={() => showModal(currentPost.id, false, true, false)} className={styles.postAction}>
+                            <FaEdit />
+                            <p>Edit</p>
+                        </div>
+                        </OverlayTrigger>
+                        <OverlayTrigger
+                        placement="top"
+                        overlay={
+                            <Tooltip>
+                                Delete Post
+                            </Tooltip>
+                        }>
+                        <div onClick={() => showModal(currentPost.id, false, false, true)} className={styles.postAction}>
+                            <FaTrash />
+                            <p>Delete</p>
+                        </div>
+                        </OverlayTrigger>
+                            </div>
+                            
+                        </Col>
+                        </Row>
+                        {currentPost.description === '' || currentPost.description ? <Row>
+                            <Col>
+                            
+                            <Card>
+                                <Card.Body className={styles.descriptionText}>{currentPost.description}</Card.Body>
+                            </Card>
+                            </Col>
+                        </Row> : null}
+                        
+                </ListGroup.Item>
             ))}
+             </ListGroup>
             <CreatePost 
                 show={openCreatePostModal}
-                onHide={() => closeModal(null, false)}
+                onHide={() => closeModal(null, true)}
             />
             <DeletePost 
                 show={openDeletePostModal}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import styles from './style.module.css';
 
 const DeletePost = (props) => {
     const deletePost = () => {
@@ -31,8 +32,10 @@ const DeletePost = (props) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Button onClick={deletePost}>Yes</Button>
-            <Button onClick={props.onHide}>No</Button>
+            <div className={styles.btnGroup}>
+              <Button onClick={deletePost} variant="success">Yes</Button>
+              <Button onClick={props.onHide} variant="danger">No</Button>
+            </div>
           </Modal.Body>
         </Modal>
     )
