@@ -38,11 +38,10 @@ const EditPost = (props) => {
         >
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
-              Modal heading
+              Edit post
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Create new post</h4>
             <Form>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Title</Form.Label>
