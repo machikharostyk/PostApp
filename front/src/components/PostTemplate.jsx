@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import styles from './style.module.css'
 
 const PostTemplate = (props) => {
     const [post, setData] = useState(null);
@@ -19,18 +20,20 @@ const PostTemplate = (props) => {
         )
     }
     return (
-        <Container>
+        <Container fluid>
             <Row>
-                <Col>
-                    <Link to="/posts"><Button>Show all posts</Button></Link>
+                <Col className={styles.showAllPosts} sm={4}>
+                    <Card bg="secondary" className={styles.cardPost}>
+                        <Link to="/posts"><Button>Show all posts</Button></Link>
+                    </Card>
                 </Col>
-                <Col>
-                    <p>
-                        {post.title}
-                    </p>
-                    <p>
-                        {post.description}
-                    </p>
+                <Col sm={8} className={styles.post}>
+                    <Card bg="info" className={styles.postCard}>
+                        <Card.Header className={styles.cardHeaderTitle}>
+                            <h2>{post.title}</h2>
+                        </Card.Header>
+                        <Card.Body>{post.description}</Card.Body>
+                    </Card>
                 </Col>
             </Row>
         </Container>

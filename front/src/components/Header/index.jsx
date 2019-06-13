@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand>
-                <Link to="/">PostViewer</Link>
+                <Link to="/" className={style.banner}>PostViewer</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">

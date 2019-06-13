@@ -1,17 +1,20 @@
 import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import ListOfPosts from './Posts';
+import styles from './style.module.css';
 
 const ShowAllPosts = () => {
 
     return (
-        <Container>
+        <Container fluid>
             <Row>
-                <Col>
-                    <Link to="/posts"><Button>Show all posts</Button></Link>
+                <Col className={styles.showAllPosts} sm={4}>
+                    <Card bg="secondary" className={styles.cardPost}>
+                        <Link to="/posts"><Button>Show all posts</Button></Link>
+                    </Card>
                 </Col>
-                <Col>
+                <Col sm={8}>
                     <ListOfPosts />
                 </Col>
             </Row>

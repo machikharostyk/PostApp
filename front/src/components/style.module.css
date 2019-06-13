@@ -1,3 +1,86 @@
 .postActions{
     display: flex;
+    justify-content: flex-end;
+}
+.descriptionText{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.listItem{
+    width: 500px;
+}
+.postTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.postAction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+    margin: 5px;
+    cursor: pointer;
+    color: #555;
+}
+
+.postAction:hover{
+    text-decoration: none;
+    color: #555;
+}
+
+.title{
+    text-align: center;
+    margin-top: 20px;
+}
+.createNewPost{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.showAllPosts{
+    padding: 0;
+    height: 92.5vh;
+}
+.cardPost{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.listGroup{
+    align-items: center; 
+    overflow-y: scroll;
+    max-height: 70vh;
+}
+.listGroup::-webkit-scrollbar{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+.listGroup::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+.listGroup::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+.cardHeaderTitle{
+    text-align: center;
+}
+.post{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.postCard {
+    width: 80%;
+}
+.btnGroup{
+    display: flex;
+    justify-content: space-between;
 }
